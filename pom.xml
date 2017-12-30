@@ -15,6 +15,19 @@
     <artifactId>IO-playground</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.0.0</version>
+
+            </plugin>
+        </plugins>
+    </reporting>
+
+
     <dependencies>
 
         <dependency>
@@ -27,6 +40,13 @@
             <groupId>com.squareup.retrofit2</groupId>
             <artifactId>converter-gson</artifactId>
             <version>2.3.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>

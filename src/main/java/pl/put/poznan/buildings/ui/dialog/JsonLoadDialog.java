@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static pl.put.poznan.buildings.utils.FileManager.readFile;
+
 /*
  * Dialog used to import an external json with data
  */
@@ -83,24 +85,6 @@ public class JsonLoadDialog extends AbstractDialog {
             case (ACTION_CANCEL):
                 setVisible(false);
                 break;
-        }
-    }
-
-    private String readFile(String file) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(file));
-        String line;
-        StringBuilder stringBuilder = new StringBuilder();
-        String ls = System.getProperty("line.separator");
-
-        try {
-            while ((line = reader.readLine()) != null) {
-                stringBuilder.append(line);
-                stringBuilder.append(ls);
-            }
-
-            return stringBuilder.toString();
-        } finally {
-            reader.close();
         }
     }
 }

@@ -7,9 +7,9 @@ import pl.put.poznan.buildings.utils.Constants;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.util.List;
+
+import static pl.put.poznan.buildings.utils.FileManager.saveFile;
 
 /*
  * Dialog used to export an external json with generated data
@@ -74,16 +74,6 @@ public class JsonSaveDialog extends AbstractDialog {
             case (ACTION_CANCEL):
                 setVisible(false);
                 break;
-        }
-    }
-
-    private void saveFile(File file, String content) {
-        try {
-            PrintWriter writer = new PrintWriter(file);
-            writer.print(content);
-            writer.close();
-        } catch (FileNotFoundException e) {
-            JOptionPane.showMessageDialog(null, Constants.EXPORT_FAILED);
         }
     }
 }

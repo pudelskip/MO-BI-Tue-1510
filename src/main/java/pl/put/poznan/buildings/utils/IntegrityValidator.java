@@ -8,14 +8,16 @@ import pl.put.poznan.buildings.model.Room;
 import java.util.HashSet;
 import java.util.List;
 
-/*
+/**
  * Class with static methods used to make sure that model integrity is not broken
  */
 public class IntegrityValidator {
 
-    /*
+    /**
      * Method checks if location has an unique id
-     * Returns true if Id is unique, false otherwise
+     * @param data list of buildings provided as json string
+     * @param id id of location to check
+     * @return true if Id is unique, false otherwise
      */
     public static boolean isIdUnique(List<Building> data, Integer id) {
         if (data == null)
@@ -40,6 +42,11 @@ public class IntegrityValidator {
         return true;
     }
 
+    /**
+     * Function checks if list of provided buildings contain a duplicate of id
+     * @param data data of list of buildings provided as json string
+     * @return boolean true when model contains duplicated id, false otherwise
+     */
     public static boolean doesModelContainsIdDuplicates(List<Building> data) {
         if (data == null)
             return false;
@@ -71,7 +78,12 @@ public class IntegrityValidator {
         return false;
     }
 
-    public static Integer getHighestId(List<Building> data){
+    /**
+     * Function to find new unique id that is higher than any other in a model
+     * @param data list of buildings provided as json string
+     * @return an unique id for provided model
+     */
+    public static Integer getNewId(List<Building> data){
         Integer id = -1;
         if(data == null || data.isEmpty())
             return 0;

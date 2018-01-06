@@ -128,8 +128,8 @@ public class Floor implements Location {
     }
 
     @Override
-    public void acceptVisitor(Visitor visitor, Integer id, VisitorAction action) {
-        visitor.visit(this, id, action);
+    public void acceptVisitor(Visitor visitor) {
+        visitor.visit(this);
     }
 
     @Override

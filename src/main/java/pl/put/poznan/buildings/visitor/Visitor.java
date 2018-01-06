@@ -7,8 +7,8 @@ import pl.put.poznan.buildings.model.Room;
 import java.util.List;
 
 public interface Visitor {
-    void visit(List<Building> buildingList, Integer id, VisitorAction action);
-    void visit(Building building, Integer id, VisitorAction action);
-    void visit(Floor floor, Integer id, VisitorAction action);
-    void visit(Room room, Integer id, VisitorAction action);
+    void visit(List<Building> buildingList);
+    void visit(Building building);
+    void visit(Floor floor);
+    void visit(Room room);
 }

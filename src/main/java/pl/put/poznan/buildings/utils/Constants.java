@@ -1,7 +1,8 @@
 package pl.put.poznan.buildings.utils;
-/*
+/**
  * Interface just to globally store values, strings etc.
  */
+
 public interface Constants {
 
     String APP_TITLE = "Moje przygody z IO";

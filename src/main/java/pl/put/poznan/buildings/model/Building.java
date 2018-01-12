@@ -1,5 +1,7 @@
 package pl.put.poznan.buildings.model;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pl.put.poznan.buildings.visitor.Visitor;
 import pl.put.poznan.buildings.visitor.VisitorAction;
 
@@ -11,6 +13,7 @@ public class Building implements Location {
     private List<Floor> floorList;
     private Integer id;
     private String name;
+    private final Logger slf4jLogger = LoggerFactory.getLogger(Building.class);
 
     public Building() {
         floorList = new ArrayList<>();
@@ -20,12 +23,14 @@ public class Building implements Location {
         this.id = id;
         this.name = name;
         floorList = new ArrayList<>();
+        slf4jLogger.debug("Empty building "+ this.id+" created");
     }
 
     public Building(List<Floor> floorList, Integer id, String name) {
         this.floorList = floorList;
         this.id = id;
         this.name = name;
+        slf4jLogger.debug("Building "+ this.id+" with floors created");
     }
 
     public List<Floor> getFloorList() {
@@ -55,10 +60,12 @@ public class Building implements Location {
     public void addFloor(Floor floor) throws Exception {
         if (floor == null)
             throw new Exception("Floor can not be a null object");
+        slf4jLogger.debug("Floor "+ floor.getId()+" added to building "+this.id);
         floorList.add(floor);
     }
 
     public void removeFloor(Floor floor) {
+        slf4jLogger.debug("Floor "+ floor.getId()+" removed from building "+this.id);
         floorList.remove(floor);
     }
 
@@ -119,6 +126,7 @@ public class Building implements Location {
 
     @Override
     public void acceptVisitor(Visitor visitor) {
+        slf4jLogger.debug("Visitor Accepted in building "+this.id);
         visitor.visit(this);
     }
 

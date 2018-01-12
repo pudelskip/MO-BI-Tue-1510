@@ -5,6 +5,8 @@ import pl.put.poznan.buildings.visitor.VisitorAction;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Class that is the lowest object (leaf) in Location composite
@@ -18,6 +20,8 @@ public class Room implements Location {
     private Float cubeVolume;
     private Float heating;
     private Float lightPower;
+
+    private final Logger slf4jLogger = LoggerFactory.getLogger(Room.class);
 
     /**
      * Default constructor without any parameters
@@ -41,6 +45,7 @@ public class Room implements Location {
         this.cubeVolume = cubeVolume;
         this.heating = heating;
         this.lightPower = lightPower;
+        slf4jLogger.debug("Room" +this.id+" created");
     }
 
     public Integer getId() {
@@ -126,8 +131,10 @@ public class Room implements Location {
      */
     @Override
     public Float calculateEnergyToVolumeConsumption() {
-        if (cubeVolume == 0)
+        if (cubeVolume == 0){
+            slf4jLogger.warn("Room volume equals zero");
             return 0f;
+        }
         return heating / cubeVolume;
     }
 
@@ -152,6 +159,7 @@ public class Room implements Location {
      */
     @Override
     public void acceptVisitor(Visitor visitor) {
+        slf4jLogger.debug("Visitor Accepted in room "+this.id);
         visitor.visit(this);
     }
 

@@ -155,7 +155,7 @@ public class Room implements Location {
         for (Room room : roomListAboveNorm) {
             Float normDifference = room.calculateEnergyToVolumeConsumption();
             Float area = room.calculateArea();
-            penalty += (normValue + normDifference) * penaltyValue * area;
+            penalty += (normDifference - normValue) * penaltyValue * area;
         }
         return penalty;
     }

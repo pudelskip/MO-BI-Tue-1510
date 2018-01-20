@@ -34,6 +34,7 @@ public class MainWindowController {
     static final String ACTION_FUN_VOLUME = "funVolume";
     static final String ACTION_FUN_LIGHT = "funLight";
     static final String ACTION_FUN_ALERT = "funAlert";
+    static final String ACTION_PENALTY = "funPenalty";
 
     private UiModel model;
     private ControllerChangeListener listener;
@@ -197,6 +198,9 @@ public class MainWindowController {
             case (ACTION_FUN_ALERT):
                 handleAlertFun(buildingIndex, floorIndex, roomIndex);
                 break;
+            case (ACTION_PENALTY):
+                handlePenaltyFun(buildingIndex, floorIndex, roomIndex);
+                break;
         }
     }
 
@@ -273,7 +277,25 @@ public class MainWindowController {
                 new AlertResultWindow(roomListResult, norm);
             }
         });
+    }
 
+    private void handlePenaltyFun(int buildingIndex, int floorIndex, int roomIndex) {
+        new PenaltyDialog(new NormAndPenaltyProvided() {
+            @Override
+            public void onProvided(Float norm, Float penalty) {
+                List<Building> buildingList = model.getBuildingList();
+                Float result = 0f;
+                if (roomIndex != -1)
+                    result = buildingList
+                            .get(buildingIndex).getFloorList().get(floorIndex)
+                            .getRoomList().get(roomIndex).calculatePenaltyForNorm(norm, penalty);
+                else if (floorIndex != -1)
+                    result = buildingList.get(buildingIndex).getFloorList().get(floorIndex).calculatePenaltyForNorm(norm, penalty);
+                else if (buildingIndex != -1)
+                    result = buildingList.get(buildingIndex).calculatePenaltyForNorm(norm, penalty);
+                JOptionPane.showMessageDialog(null, Constants.FUN_PENALTY_RESULT_DESC + result);
+            }
+        });
     }
 
     private void handleImport() {

@@ -13,6 +13,7 @@ public interface Constants {
     String IMPORT_EXTERNAL_JSON = "Importuj dane";
     String EXPORT_EXTERNAL_JSON = "Zapisz dane";
     String FIND_ALERT_TITLE = "Wyszukaj nieunormowane pomieszczenia";
+    String PENALTY_TITLE = "Oblicz wartość kary";
     String ALERT_RESULT_TITLE = "Pomieszczenia przekraczające normy";
 
     String ID_DESC = "Podaj id";
@@ -21,7 +22,9 @@ public interface Constants {
     String LOAD_DESC = "Wczytaj";
     String SAVE_DESC = "Zapisz";
     String SEARCH_DESC = "Wyszukaj";
+    String CALCULATE_DESC = "Oblicz";
     String ALERT_NORM_DESC = "Podaj wartość normy";
+    String PENALTY_DESC = "Podaj wartość kary";
     String GO_BACK_DESC = "Anuluj";
     String EXIT_DESC = "Wyjdź z aplikacji";
     String ROOM_ID_DESC = "Id pomieszczenia";
@@ -41,6 +44,7 @@ public interface Constants {
     String FUN_LIGHT_DESC = "Oblicz oświetlenie na jednostkę powierzchni";
     String FUN_HEAT_DESC = "Oblicz zużycie energii na jednostkę objętości";
     String FUN_ALERT_DESC = "Znajdź pomieszczeni przekraczające normę";
+    String FUN_PENALTY_DESC = "Oblicz karę";
 
     String FUN_IMPORT_JSON_DESC = "Importuj dane";
     String FUN_EXPORT_JSON_DESC = "Eksportuj dane";
@@ -49,6 +53,7 @@ public interface Constants {
     String FUN_VOLUME_RESULT_DESC = "Suma kubatury wyniosła: ";
     String FUN_LIGHT_RESULT_DESC = "Zużycie światła na powierzchnię wyniosło: ";
     String FUN_HEAT_RESULT_DESC = "Zużycie energii na powierzchnię wyniosła: ";
+    String FUN_PENALTY_RESULT_DESC = "Kara wyniosła: ";
 
     String INVALID_DATA_MESSAGE = "Dane nie są poprawne!";
     String INVALID_NORM_MESSAGE = "Norma nie może być liczbą niedodatnią!";

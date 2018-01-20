@@ -118,6 +118,7 @@ public class MainWindow extends JFrame implements ActionListener, ListSelectionL
         addButton(Constants.FUN_HEAT_DESC, ACTION_FUN_HEAT, layout);
         addButton(Constants.FUN_LIGHT_DESC, ACTION_FUN_LIGHT, layout);
         addButton(Constants.FUN_ALERT_DESC, ACTION_FUN_ALERT, layout);
+        addButton(Constants.FUN_PENALTY_DESC, ACTION_PENALTY, layout);
         addButton(Constants.FUN_IMPORT_JSON_DESC, ACTION_IMPORT_JSON, layout);
         addButton(Constants.FUN_EXPORT_JSON_DESC, ACTION_EXPORT_JSON, layout);
         contentPane.add(layout);

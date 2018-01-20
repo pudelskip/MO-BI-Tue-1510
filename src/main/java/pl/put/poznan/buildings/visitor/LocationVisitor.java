@@ -29,6 +29,10 @@ public class LocationVisitor implements Visitor {
      */
     private Float normValue;
     /**
+     * variable that holds provided penalty value, is optional if visitor does not use function to calculate penalty
+     */
+    private Float penaltyValue;
+    /**
      * variable that holds id of location that is chosen for a report
      */
     private Integer id;
@@ -62,6 +66,23 @@ public class LocationVisitor implements Visitor {
         calculationResult = null;
         roomsAboveNorm = null;
         this.normValue = normValue;
+        this.id = id;
+        this.action = action;
+    }
+
+    /**
+     * Extended constructor for class, used for calculating penalty
+     *
+     * @param id           of location on which action is about to be performed
+     * @param action       chosen action from VisitorAction interface that is about to be performed
+     * @param normValue    norm value for a room
+     * @param penaltyValue value of penalty
+     */
+    public LocationVisitor(Integer id, VisitorAction action, Float normValue, Float penaltyValue) {
+        calculationResult = null;
+        roomsAboveNorm = null;
+        this.normValue = normValue;
+        this.penaltyValue = penaltyValue;
         this.id = id;
         this.action = action;
     }
@@ -155,6 +176,9 @@ public class LocationVisitor implements Visitor {
                 break;
             case ABOVE_NORM:
                 roomsAboveNorm = location.getRoomListAboveNorm(normValue);
+                break;
+            case PENALTY:
+                calculationResult = location.calculatePenaltyForNorm(normValue, penaltyValue);
         }
     }
 

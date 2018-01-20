@@ -3,6 +3,7 @@ package pl.put.poznan.buildings.model;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.mockito.InOrder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,6 +85,11 @@ public class FloorTest {
         List<Room> roomList = model.getRoomList();
         assertTrue(roomList != null);
         assertTrue(!roomList.isEmpty());
+        for (Room room : roomList) {
+            InOrder inOrder = inOrder(room);
+            inOrder.verify(room).getLightPower();
+            inOrder.verify(room).getArea();
+        }
     }
 
     @Test

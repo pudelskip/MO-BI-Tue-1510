@@ -5,10 +5,13 @@ import org.junit.Test;
 
 import java.util.List;
 
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
 
 public class BuildingTest {
 
+    private static final Float NORM_TEST_VALUE = 10f;
+    private static final Float PENALTY_TEST_VALUE = 10f;
     private Building building;
 
     @Before
@@ -20,6 +23,7 @@ public class BuildingTest {
             when(floor.calculateVolume()).thenReturn(1f);
             when(floor.calculateEnergyToVolumeConsumption()).thenReturn(1f);
             when(floor.calculateLightToAreaConsumption()).thenReturn(1f);
+            when(floor.calculatePenaltyForNorm(anyFloat(), anyFloat())).thenReturn(1f);
             try {
                 building.addFloor(floor);
             } catch (Exception e) {
@@ -66,6 +70,16 @@ public class BuildingTest {
         building.calculateLightToAreaConsumption();
         for (Floor floor : floorList) {
             verify(floor, times(1)).calculateLightToAreaConsumption();
+        }
+    }
+
+    @Test
+    public void testPenalty() {
+        List<Floor> floorList = building.getFloorList();
+        Float result = building.calculatePenaltyForNorm(NORM_TEST_VALUE, PENALTY_TEST_VALUE);
+        assertTrue(result.equals(10f));
+        for (Floor floor : floorList) {
+            verify(floor, times(1)).calculatePenaltyForNorm(NORM_TEST_VALUE, PENALTY_TEST_VALUE);
         }
     }
 }

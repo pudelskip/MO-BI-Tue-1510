@@ -30,4 +30,8 @@ public interface RestConstants {
      * end-point for finding rooms above provided norm
      */
     String GET_ROOMS_ABOVE_ROOM = "/norm-check";
+    /**
+     * end-point for calculating penalty for rooms above norm
+     */
+    String CALCULATE_PENALTY = "/penalty";
 }

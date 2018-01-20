@@ -46,11 +46,22 @@ public interface Location {
     public abstract List<Room> getRoomListAboveNorm(Float normValue);
 
     /**
+     * Calculates penalty for location caused by locations that energy consumption is above norm
+     *
+     * @param normValue    Float that represents norm above which penalty will be forced
+     * @param penaltyValue Float that represents amount of money (in pln) will be charged for every unit
+     * @return Float as a sum of penalty in pln
+     */
+    public abstract Float calculatePenaltyForNorm(Float normValue, Float penaltyValue);
+
+    /**
      * Function that accept visitor for report purpose
      *
      * @param visitor an object of visitor
      * @see Visitor
      */
     public abstract void acceptVisitor(Visitor visitor);
+
+
 
 }

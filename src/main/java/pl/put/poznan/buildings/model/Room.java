@@ -146,6 +146,20 @@ public class Room implements Location {
         return result;
     }
 
+    @Override
+    public Float calculatePenaltyForNorm(Float normValue, Float penaltyValue) {
+        List<Room> roomListAboveNorm = getRoomListAboveNorm(normValue);
+        if (roomListAboveNorm == null || roomListAboveNorm.isEmpty())
+            return 0f;
+        Float penalty = 0f;
+        for (Room room : roomListAboveNorm) {
+            Float normDifference = room.calculateEnergyToVolumeConsumption();
+            Float area = room.calculateArea();
+            penalty += (normValue + normDifference) * penaltyValue * area;
+        }
+        return penalty;
+    }
+
     /**
      * Function that accept Visitor for reporting purposes
      *

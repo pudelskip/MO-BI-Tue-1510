@@ -160,4 +160,31 @@ public class AppRestController {
         gson = new Gson();
         return gson.toJson(roomsAboveNorm);
     }
+
+    /**
+     * Function performed when a request for penalty appears
+     *
+     * @param jsonString json as a string for model on which calculation is performed. Param is mandatory
+     * @param id         for a location on which calculation is performed. Param is mandatory
+     * @param norm       value provided by the user
+     * @param penalty    value of penalty provided by user
+     * @return result of calculation as Float
+     */
+    @RequestMapping(CALCULATE_PENALTY)
+    public Float getPenalty(@RequestParam(name = "json") String jsonString,
+                            @RequestParam(name = "id") Integer id,
+                            @RequestParam(name = "norm") Float norm,
+                            @RequestParam(name = "penalty") Float penalty) {
+
+        logger.debug(jsonString);
+        logger.debug(String.valueOf(id));
+
+        Gson gson = new Gson();
+        Building[] buildingArray = gson.fromJson(jsonString, Building[].class);
+        List<Building> buildingList = new ArrayList<>(Arrays.asList(buildingArray));
+
+        LocationVisitor visitor = new LocationVisitor(id, VisitorAction.PENALTY, norm, penalty);
+        visitor.visit(buildingList);
+        return visitor.getCalculationResult();
+    }
 }

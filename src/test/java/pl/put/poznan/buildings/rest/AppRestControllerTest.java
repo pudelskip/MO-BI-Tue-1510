@@ -56,6 +56,7 @@ public class AppRestControllerTest {
     public void testEveryAction() throws Exception {
         Integer id = 1;
         Float norm = 2f;
+        Float penalty = 3f;
         mockMvc.perform(get("{base}/{action}?id={id}&json={json}", RestConstants.BASE, RestConstants.CALCULATE_AREA, id, exampleJson))
                 .andExpect(status().isOk());
         mockMvc.perform(get("{base}/{action}?id={id}&json={json}", RestConstants.BASE, RestConstants.CALCULATE_ENERGY_TO_VOLUME, id, exampleJson))
@@ -64,7 +65,10 @@ public class AppRestControllerTest {
                 .andExpect(status().isOk());
         mockMvc.perform(get("{base}/{action}?id={id}&json={json}", RestConstants.BASE, RestConstants.CALCULATE_VOLUME, id, exampleJson))
                 .andExpect(status().isOk());
-        mockMvc.perform(get("{base}/{action}?id={id}&json={json}&norm={norm}", RestConstants.BASE, RestConstants.CALCULATE_VOLUME, id, exampleJson, norm))
+        mockMvc.perform(get("{base}/{action}?id={id}&json={json}&norm={norm}", RestConstants.BASE, RestConstants.GET_ROOMS_ABOVE_ROOM, id, exampleJson, norm))
+                .andExpect(status().isOk());
+        mockMvc.perform(get("{base}/{action}?id={id}&json={json}&norm={norm}&penalty={penalty}"
+                , RestConstants.BASE, RestConstants.CALCULATE_PENALTY, id, exampleJson, norm, penalty))
                 .andExpect(status().isOk());
     }
 }

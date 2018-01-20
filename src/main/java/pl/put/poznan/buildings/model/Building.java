@@ -117,6 +117,18 @@ public class Building implements Location {
     }
 
     @Override
+    public Float calculatePenaltyForNorm(Float normValue, Float penaltyValue) {
+        List<Floor> floorList = getFloorList();
+        if (floorList == null || floorList.isEmpty())
+            return 0f;
+        Float penalty = 0f;
+        for (Floor floor : floorList) {
+            penalty += floor.calculatePenaltyForNorm(normValue, penaltyValue);
+        }
+        return penalty;
+    }
+
+    @Override
     public void acceptVisitor(Visitor visitor) {
         visitor.visit(this);
     }

@@ -7,7 +7,6 @@ import pl.put.poznan.buildings.model.Room;
 import pl.put.poznan.buildings.ui.dialog.*;
 import pl.put.poznan.buildings.utils.Constants;
 import pl.put.poznan.buildings.utils.IntegrityValidator;
-import pl.put.poznan.buildings.visitor.LocationVisitor;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -42,6 +41,11 @@ public class MainWindowController {
 
     MainWindowController(ControllerChangeListener listener) {
         model = new UiModel();
+        this.listener = listener;
+    }
+
+    MainWindowController(UiModel model, ControllerChangeListener listener) {
+        this.model = model;
         this.listener = listener;
     }
 

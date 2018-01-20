@@ -1,7 +1,6 @@
 package pl.put.poznan.buildings.model;
 
 import pl.put.poznan.buildings.visitor.Visitor;
-import pl.put.poznan.buildings.visitor.VisitorAction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,14 +105,14 @@ public class Floor implements Location {
 
     @Override
     public Float calculateEnergyToVolumeConsumption() {
-        Float areaSum = calculateArea();
+        Float volumeSum = calculateVolume();
         Float energySum = 0f;
         for (Room childLocation : roomList) {
             energySum += childLocation.getHeating();
         }
-        if (areaSum == 0)
+        if (volumeSum == 0)
             return 0f;
-        return energySum / areaSum;
+        return energySum / volumeSum;
     }
 
     @Override

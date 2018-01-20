@@ -3,7 +3,10 @@ package pl.put.poznan.buildings.rest;
 import com.google.gson.Gson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import pl.put.poznan.buildings.model.Building;
 import pl.put.poznan.buildings.model.Room;
 import pl.put.poznan.buildings.visitor.LocationVisitor;
@@ -32,15 +35,16 @@ public class AppRestController {
 
     /**
      * Function performed when a request for area appears
-     * @see RestConstants
+     *
      * @param jsonString json as a string for model on which calculation is performed. Param is mandatory
-     * @param id for a location on which calculation is performed. Param is mandatory
+     * @param id         for a location on which calculation is performed. Param is mandatory
      * @return result of calculate area as a Float
+     * @see RestConstants
      * @see pl.put.poznan.buildings.model.Location
      */
     @RequestMapping(CALCULATE_AREA)
-    public Float getArea(        @RequestParam(name="json") String jsonString,
-                                 @RequestParam(name = "id") Integer id) {
+    public Float getArea(@RequestParam(name = "json") String jsonString,
+                         @RequestParam(name = "id") Integer id) {
         logger.debug(jsonString);
         logger.debug(String.valueOf(id));
 
@@ -55,15 +59,16 @@ public class AppRestController {
 
     /**
      * Function performed when a request for volume appears
-     * @see RestConstants
+     *
      * @param jsonString json as a string for model on which calculation is performed. Param is mandatory
-     * @param id for a location on which calculation is performed. Param is mandatory
+     * @param id         for a location on which calculation is performed. Param is mandatory
      * @return result of calculate volume as a Float
+     * @see RestConstants
      * @see pl.put.poznan.buildings.model.Location
      */
     @RequestMapping(CALCULATE_VOLUME)
-    public Float getVolume(@RequestParam(name="json") String jsonString,
-                         @RequestParam(name = "id") Integer id) {
+    public Float getVolume(@RequestParam(name = "json") String jsonString,
+                           @RequestParam(name = "id") Integer id) {
 
         logger.debug(jsonString);
         logger.debug(String.valueOf(id));
@@ -79,15 +84,16 @@ public class AppRestController {
 
     /**
      * Function performed when a request for light to area appears
-     * @see RestConstants
+     *
      * @param jsonString json as a string for model on which calculation is performed. Param is mandatory
-     * @param id for a location on which calculation is performed. Param is mandatory
+     * @param id         for a location on which calculation is performed. Param is mandatory
      * @return result of calculate ratio as a Float
+     * @see RestConstants
      * @see pl.put.poznan.buildings.model.Location
      */
     @RequestMapping(CALCULATE_LIGHT_TO_AREA)
-    public Float getLightToArea(@RequestParam(name="json") String jsonString,
-                     @RequestParam(name = "id") Integer id) {
+    public Float getLightToArea(@RequestParam(name = "json") String jsonString,
+                                @RequestParam(name = "id") Integer id) {
 
         logger.debug(jsonString);
         logger.debug(String.valueOf(id));
@@ -103,15 +109,16 @@ public class AppRestController {
 
     /**
      * Function performed when a request for energy to volume appears
-     * @see RestConstants
+     *
      * @param jsonString json as a string for model on which calculation is performed. Param is mandatory
-     * @param id for a location on which calculation is performed. Param is mandatory
+     * @param id         for a location on which calculation is performed. Param is mandatory
      * @return result of calculate ratio as a Float
+     * @see RestConstants
      * @see pl.put.poznan.buildings.model.Location
      */
     @RequestMapping(CALCULATE_ENERGY_TO_VOLUME)
-    public Float getEnergyToVolume(@RequestParam(name="json") String jsonString,
-                     @RequestParam(name = "id") Integer id) {
+    public Float getEnergyToVolume(@RequestParam(name = "json") String jsonString,
+                                   @RequestParam(name = "id") Integer id) {
 
         logger.debug(jsonString);
         logger.debug(String.valueOf(id));
@@ -127,15 +134,16 @@ public class AppRestController {
 
     /**
      * Function performed when a request for rooms above norm appears
-     * @see RestConstants
+     *
      * @param jsonString json as a string for model on which calculation is performed. Param is mandatory
-     * @param id for a location on which calculation is performed. Param is mandatory
-     * @param norm value provided by the user
+     * @param id         for a location on which calculation is performed. Param is mandatory
+     * @param norm       value provided by the user
      * @return json as a string that contains every room above norm. Empty if not a single room breaks norm
+     * @see RestConstants
      * @see pl.put.poznan.buildings.model.Location
      */
     @RequestMapping(GET_ROOMS_ABOVE_ROOM)
-    public String getAboveNorm(@RequestParam(name="json") String jsonString,
+    public String getAboveNorm(@RequestParam(name = "json") String jsonString,
                                @RequestParam(name = "id") Integer id,
                                @RequestParam(name = "norm") Float norm) {
 

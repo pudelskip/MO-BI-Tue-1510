@@ -5,7 +5,8 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class RoomTest {
 
@@ -18,7 +19,7 @@ public class RoomTest {
 
 
     @Before
-    public void init(){
+    public void init() {
         room = new Room();
         room.setArea(BASIC_AREA);
         room.setCubeVolume(BASIC_VOLUME);
@@ -27,27 +28,27 @@ public class RoomTest {
     }
 
     @Test
-    public void calculateAreaTest(){
+    public void calculateAreaTest() {
         assertEquals(room.calculateArea(), BASIC_AREA);
     }
 
     @Test
-    public void calculateVolumeTest(){
+    public void calculateVolumeTest() {
         assertEquals(room.calculateVolume(), BASIC_VOLUME);
     }
 
     @Test
-    public void calculateLightToAreaTest(){
-            assertEquals(room.calculateLightToAreaConsumption(), new Float(3f));
+    public void calculateLightToAreaTest() {
+        assertEquals(room.calculateLightToAreaConsumption(), new Float(3f));
     }
 
     @Test
-    public void calculateEnergyToVolumeTest(){
+    public void calculateEnergyToVolumeTest() {
         assertEquals(room.calculateEnergyToVolumeConsumption(), new Float(2f));
     }
 
     @Test
-    public void roomAboveNormTest(){
+    public void roomAboveNormTest() {
         List<Room> roomListAboveNorm = room.getRoomListAboveNorm(4f);
         assertTrue(roomListAboveNorm.isEmpty());
 
@@ -64,5 +65,4 @@ public class RoomTest {
 
 
     }
-
 }

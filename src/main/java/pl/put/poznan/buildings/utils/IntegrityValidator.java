@@ -44,6 +44,7 @@ public class IntegrityValidator {
 
     /**
      * Function checks if list of provided buildings contain a duplicate of id
+     *
      * @param data data of list of buildings provided as json string
      * @return boolean true when model contains duplicated id, false otherwise
      */
@@ -80,28 +81,29 @@ public class IntegrityValidator {
 
     /**
      * Function to find new unique id that is higher than any other in a model
+     *
      * @param data list of buildings provided as json string
      * @return an unique id for provided model
      */
-    public static Integer getNewId(List<Building> data){
+    public static Integer getNewId(List<Building> data) {
         Integer id = -1;
-        if(data == null || data.isEmpty())
+        if (data == null || data.isEmpty())
             return 0;
         for (Building building : data) {
             Integer idTmp = building.getId();
-            if(idTmp > id)
+            if (idTmp > id)
                 id = idTmp;
             List<Floor> floorList = building.getFloorList();
             if (floorList != null) {
                 for (Floor floor : floorList) {
                     idTmp = floor.getId();
-                    if(idTmp > id)
+                    if (idTmp > id)
                         id = idTmp;
                     List<Room> roomList = floor.getRoomList();
                     if (roomList != null)
                         for (Room room : roomList) {
                             idTmp = room.getId();
-                            if(idTmp > id)
+                            if (idTmp > id)
                                 id = idTmp;
                         }
                 }

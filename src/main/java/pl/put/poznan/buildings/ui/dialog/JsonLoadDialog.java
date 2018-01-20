@@ -8,9 +8,7 @@ import pl.put.poznan.buildings.utils.IntegrityValidator;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,7 +16,7 @@ import java.util.List;
 
 import static pl.put.poznan.buildings.utils.FileManager.readFile;
 
-/*
+/**
  * Dialog used to import an external json with data
  */
 public class JsonLoadDialog extends AbstractDialog {

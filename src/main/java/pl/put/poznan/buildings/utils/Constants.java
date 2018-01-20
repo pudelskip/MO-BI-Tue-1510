@@ -1,4 +1,5 @@
 package pl.put.poznan.buildings.utils;
+
 /**
  * Interface just to globally store values, strings etc.
  */

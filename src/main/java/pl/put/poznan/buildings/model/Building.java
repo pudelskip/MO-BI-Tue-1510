@@ -1,7 +1,6 @@
 package pl.put.poznan.buildings.model;
 
 import pl.put.poznan.buildings.visitor.Visitor;
-import pl.put.poznan.buildings.visitor.VisitorAction;
 
 import java.util.ArrayList;
 import java.util.List;

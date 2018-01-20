@@ -1,4 +1,5 @@
 package pl.put.poznan.buildings.ui.mainwindow;
+
 import pl.put.poznan.buildings.model.Room;
 import pl.put.poznan.buildings.utils.Constants;
 

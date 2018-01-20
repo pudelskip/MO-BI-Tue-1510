@@ -1,7 +1,6 @@
 package pl.put.poznan.buildings.model;
 
 import pl.put.poznan.buildings.visitor.Visitor;
-import pl.put.poznan.buildings.visitor.VisitorAction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +8,7 @@ import java.util.List;
 /**
  * Class that is the lowest object (leaf) in Location composite
  * implements Location interface
+ *
  * @see Location
  */
 public class Room implements Location {
@@ -148,6 +148,7 @@ public class Room implements Location {
 
     /**
      * Function that accept Visitor for reporting purposes
+     *
      * @param visitor Object that implements Visitor interface
      */
     @Override

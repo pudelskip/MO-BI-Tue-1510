@@ -9,6 +9,7 @@ import java.util.List;
 
 /**
  * Class that implements Visitor interface, used to get info from location model
+ *
  * @see Visitor
  * VisitorAction interface is used for holding actions possible to be performed by visitor
  * @see VisitorAction
@@ -38,10 +39,11 @@ public class LocationVisitor implements Visitor {
 
     /**
      * Basic constructor for class
-     * @param id of location on which action is about to be performed
+     *
+     * @param id     of location on which action is about to be performed
      * @param action chosen action from VisitorAction interface that is about to be performed
      */
-    public LocationVisitor(Integer id, VisitorAction action){
+    public LocationVisitor(Integer id, VisitorAction action) {
         this.id = id;
         this.action = action;
         calculationResult = null;
@@ -51,11 +53,12 @@ public class LocationVisitor implements Visitor {
 
     /**
      * Extended constructor for class, used for finding rooms above norm
-     * @param id of location on which action is about to be performed
-     * @param action chosen action from VisitorAction interface that is about to be performed
+     *
+     * @param id        of location on which action is about to be performed
+     * @param action    chosen action from VisitorAction interface that is about to be performed
      * @param normValue norm value for a room
      */
-    public LocationVisitor(Integer id, VisitorAction action, Float normValue){
+    public LocationVisitor(Integer id, VisitorAction action, Float normValue) {
         calculationResult = null;
         roomsAboveNorm = null;
         this.normValue = normValue;
@@ -65,22 +68,24 @@ public class LocationVisitor implements Visitor {
 
     /**
      * Function used to perform a visitation on selected location
+     *
      * @param buildingList list of buildings to visit
      */
     @Override
     public void visit(List<Building> buildingList) {
-        if(buildingList == null || buildingList.isEmpty()){
+        if (buildingList == null || buildingList.isEmpty()) {
             return;
         }
-        for(Building building : buildingList){
+        for (Building building : buildingList) {
             building.acceptVisitor(this);
-            if(calculationResult != null || roomsAboveNorm != null)
+            if (calculationResult != null || roomsAboveNorm != null)
                 return;
         }
     }
 
     /**
      * Function used to perform a visitation on selected location
+     *
      * @param building to visit
      */
     @Override
@@ -90,9 +95,9 @@ public class LocationVisitor implements Visitor {
             return;
         }
         List<Floor> floorList = building.getFloorList();
-        if(floorList != null && !floorList.isEmpty())
-            for(Floor floor : floorList) {
-                if(calculationResult != null || roomsAboveNorm != null)
+        if (floorList != null && !floorList.isEmpty())
+            for (Floor floor : floorList) {
+                if (calculationResult != null || roomsAboveNorm != null)
                     return;
                 floor.acceptVisitor(this);
             }
@@ -100,6 +105,7 @@ public class LocationVisitor implements Visitor {
 
     /**
      * Function used to perform a visitation on selected location
+     *
      * @param floor to visit
      */
     @Override
@@ -109,9 +115,9 @@ public class LocationVisitor implements Visitor {
             return;
         }
         List<Room> roomList = floor.getRoomList();
-        if(roomList != null && !roomList.isEmpty())
-            for(Room room : roomList) {
-                if(calculationResult != null || roomsAboveNorm != null)
+        if (roomList != null && !roomList.isEmpty())
+            for (Room room : roomList) {
+                if (calculationResult != null || roomsAboveNorm != null)
                     return;
                 room.acceptVisitor(this);
             }
@@ -120,6 +126,7 @@ public class LocationVisitor implements Visitor {
 
     /**
      * Function used to perform a visitation on selected location
+     *
      * @param room to visit
      */
     @Override
@@ -129,10 +136,11 @@ public class LocationVisitor implements Visitor {
 
     /**
      * Private function used to calculate a result for selected location and action
+     *
      * @param location that visitation is performed on
      */
-    private void calculateResult(Location location){
-        switch (action){
+    private void calculateResult(Location location) {
+        switch (action) {
             case AREA:
                 calculationResult = location.calculateArea();
                 break;
@@ -152,6 +160,7 @@ public class LocationVisitor implements Visitor {
 
     /**
      * Public function to fetch a result from visitation
+     *
      * @return result as a float, used for basic reporting actions, if visitation was not yet performed function returns 0
      */
     public Float getCalculationResult() {
@@ -160,6 +169,7 @@ public class LocationVisitor implements Visitor {
 
     /**
      * Public function to fetch rooms that were above provided norm
+     *
      * @return a list of room that were above provided norm, returns empty list if visitation was not yet performed
      */
     public List<Room> getRoomsAboveNorm() {
